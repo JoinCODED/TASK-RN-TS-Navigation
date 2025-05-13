@@ -1,6 +1,7 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import TripCard from "./TripCard";
+import { Link } from "expo-router";
 
 interface Trip {
   id: number;

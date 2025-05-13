@@ -1,5 +1,6 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
+import { Link } from "expo-router";
 
 interface TripCardProps {
   trip: {
@@ -17,9 +18,11 @@ interface TripCardProps {
 
 const TripCard = ({ trip }: TripCardProps) => {
   return (
-    <View style={styles.container}>
-      <Image source={{ uri: trip.img }} style={styles.image} />
-    </View>
+    <TouchableOpacity style={styles.container}>
+      <Link href={`/trips/${trip.id}`}>
+        <Image source={{ uri: trip.img }} style={styles.image} />
+      </Link>
+    </TouchableOpacity>
   );
 };
 
@@ -28,7 +31,7 @@ export default TripCard;
 const styles = StyleSheet.create({
   image: {
     width: "100%",
-    height: 200,
+    height: 180,
     borderRadius: 10,
   },
   container: {
