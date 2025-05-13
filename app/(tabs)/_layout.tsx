@@ -1,27 +1,48 @@
 import { Tabs } from "expo-router";
-import React from "react";
-import AntDesign from "@expo/vector-icons/AntDesign";
-import EvilIcons from "@expo/vector-icons/EvilIcons";
+import { Ionicons } from "@expo/vector-icons";
+import { ReactNode } from "react";
 
-export default function TabsLayout() {
+export default function TabLayout() {
   return (
-    <Tabs>
+    <Tabs
+      screenOptions={{
+        headerShown: false,
+        // ① Tell the tabs what colors to use for active vs inactive icons/text:
+        tabBarActiveTintColor: "black",
+        tabBarInactiveTintColor: "white",
+        tabBarStyle: {
+          backgroundColor: "#1abc9c",
+        },
+      }}
+    >
       <Tabs.Screen
         name="stays"
         options={{
           title: "Stays",
-          tabBarIcon: () => <AntDesign name="home" size={24} color="black" />,
-          headerShown: false,
+          tabBarIcon: ({
+            color,
+            size,
+          }: {
+            focused: boolean;
+            color: string;
+            size: number;
+          }): ReactNode => <Ionicons name="home" size={size} color={color} />,
         }}
       />
       <Tabs.Screen
         name="trips"
         options={{
           title: "Trips",
-          tabBarIcon: () => (
-            <EvilIcons name="location" size={28} color="black" />
+          tabBarIcon: ({
+            color,
+            size,
+          }: {
+            focused: boolean;
+            color: string;
+            size: number;
+          }): ReactNode => (
+            <Ionicons name="compass" size={size} color={color} />
           ),
-          headerShown: false,
         }}
       />
     </Tabs>
