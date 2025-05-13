@@ -15,7 +15,7 @@ interface StayCardProps {
 const StayCard = ({ stay }: StayCardProps) => {
   return (
     <View style={styles.container}>
-      <Link href={"/Staydetails"}>
+      <Link href={"/stays/Staydetails"}>
         <Image source={{ uri: stay.img }} style={styles.image} />
       </Link>
     </View>
