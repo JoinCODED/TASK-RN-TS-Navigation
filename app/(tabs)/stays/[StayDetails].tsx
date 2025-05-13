@@ -4,8 +4,8 @@ import stays from "@/data/stays";
 import { useLocalSearchParams } from "expo-router";
 
 const StayDetails = () => {
-	const { stayID } = useLocalSearchParams();
-	const stay = stays.find((item) => `${item.id}` === stayID);
+	const { StayDetails } = useLocalSearchParams();
+	const stay = stays.find((item) => `${item.id}` === StayDetails);
 	return (
 		<View style={styles.container}>
 			<Text style={styles.name}>{stay?.name}</Text>
