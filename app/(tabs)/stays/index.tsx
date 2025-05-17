@@ -10,6 +10,7 @@ const StayIndex = () => {
   const displayStays = stays.filter((stay) =>
     stay.name.toLowerCase().includes(search.toLowerCase())
   );
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Explore Stays</Text>

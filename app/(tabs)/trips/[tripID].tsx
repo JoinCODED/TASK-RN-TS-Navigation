@@ -1,9 +1,16 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import trips from "@/data/trips";
+import { useLocalSearchParams } from "expo-router";
 
 const TripDetails = () => {
-  const trip = trips[0];
+  //desctructured object to capture passed value from hook and Link tag
+  const { tripID } = useLocalSearchParams<{ tripID: string }>();
+  //find iteration method is used for Trip Details, the argument value (tripID) must be converted as hook is returning string value
+  const trip = trips.find((trip) => {
+    return trip.id === Number(tripID);
+  });
+  console.log(`Passed Trip ID from searchParams: ${tripID}`);
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{trip?.name}</Text>

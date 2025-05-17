@@ -1,9 +1,20 @@
 import { Image, StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import stays from "@/data/stays";
+import { router, useLocalSearchParams } from "expo-router";
 
 const StayDetails = () => {
-  const stay = stays[0];
+  //link param
+  const { stayID } = useLocalSearchParams<{ stayID: string }>();
+  const stay = stays.find((stay) => {
+    return stay.id === Number(stayID);
+  });
+  useEffect(() => {
+    if (!stayID) {
+      router.replace("/stays"); // go back to stays index
+    }
+  }, [stayID]);
+  console.log(`Passed Stay ID from searchParams: ${stayID}`);
   return (
     <View style={styles.container}>
       <Text style={styles.name}>{stay?.name}</Text>
