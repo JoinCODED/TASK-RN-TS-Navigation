@@ -1,9 +1,11 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import trips from "@/data/trips";
+import { useLocalSearchParams } from "expo-router";
 
 const TripDetails = () => {
-  const trip = trips[0];
+  const { id } = useLocalSearchParams();
+  const trip = trips.find((s) => s.id === Number(id));
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{trip?.name}</Text>
@@ -14,7 +16,6 @@ const TripDetails = () => {
         <Text style={styles.description}>Difficulty: {trip?.difficulty}</Text>
         <Text style={styles.description}>Rating: {trip?.rating}</Text>
       </View>
-
       <Text style={styles.description}>{trip?.details}</Text>
     </View>
   );
@@ -27,6 +28,7 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: "white",
     flex: 1,
+    justifyContent: "center",
   },
   image: {
     width: "100%",
