@@ -1,9 +1,14 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import trips from "@/data/trips";
+import { useLocalSearchParams } from "expo-router";
 
 const TripDetails = () => {
-  const trip = trips[0];
+  const { Tripid } = useLocalSearchParams();
+  const trip = trips.find((p) => p.id === Number(Tripid));
+  console.log(Tripid);
+  console.log(trip);
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{trip?.name}</Text>
