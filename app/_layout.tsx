@@ -1,37 +1,16 @@
-import { Stack } from "expo-router";
-import { Button } from "react-native";
-import { Header } from "react-native/Libraries/NewAppScreen";
+import { StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { Tabs } from "expo-router";
 
-export default function RootLayout() {
+const RootLayout = () => {
   return (
-    <Stack>
-      <Stack.Screen
-        name="index"
-        options={{ title: "Home", headerShown: false }}
-      />
-      <Stack.Screen
-        name="trips/[Tripid]"
-        options={{
-          title: " Card List",
-          headerBackTitle: "GO Back",
-          headerStyle: { backgroundColor: "red" },
-          headerTitleStyle: { Color: "white" },
-          headerRight: () => {
-            return (
-              <Button
-                title="Edit"
-                onPress={() => {
-                  alert("Only for Admin");
-                }}
-              />
-            );
-          },
-        }}
-      />
-    </Stack>
+    <Tabs>
+      <Tabs.Screen name="index" options={{ title: "trips" }} />
+      <Tabs.Screen name="(tabs)" options={{ title: "stays" }} />
+    </Tabs>
   );
-}
-
-export const unstable_settings = {
-  initialRouteName: "index",
 };
+
+export default RootLayout;
+
+const styles = StyleSheet.create({});
