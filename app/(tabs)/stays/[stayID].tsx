@@ -9,11 +9,7 @@ const StayDetails = () => {
   const stay = stays.find((stay) => {
     return stay.id === Number(stayID);
   });
-  useEffect(() => {
-    if (!stayID) {
-      router.replace("/stays"); // go back to stays index
-    }
-  }, [stayID]);
+
   console.log(`Passed Stay ID from searchParams: ${stayID}`);
   return (
     <View style={styles.container}>
