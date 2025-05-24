@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import { Redirect } from "expo-router";
+import { Stack } from "expo-router";
 
-const index = () => {
-	return <Redirect href="/trips/" />;
+const layout = () => {
+	return <Stack />;
 };
 
-export default index;
+export default layout;
 
 const styles = StyleSheet.create({});
