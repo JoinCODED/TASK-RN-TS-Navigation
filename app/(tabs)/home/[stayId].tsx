@@ -1,16 +1,22 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Button, Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import stays from "@/data/stays";
+import { useLocalSearchParams, useRouter } from "expo-router";
 
 const StayDetails = () => {
-  const stay = stays[0];
+  const { stayId } = useLocalSearchParams();
+  const stay = stays.find((item) => `${item.id}` === stayId);
+
+  const router = useRouter();
   return (
     <View style={styles.container}>
+      {/*<Button title="Go Back" onPress={() => router.back()} />*/}
       <Text style={styles.name}>{stay?.name}</Text>
       <Image source={{ uri: stay?.img }} style={styles.image} />
       <Text style={styles.text}>Location: {stay?.location}</Text>
       <Text style={styles.text}>Price: ${stay?.price} / night</Text>
       <Text style={styles.text}>Rating: {stay?.rating} / 5</Text>
+      {/*<Button title="Next Stay" onPress={() => router.push(`/`)} />*/}
     </View>
   );
 };
