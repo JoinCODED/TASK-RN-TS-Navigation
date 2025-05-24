@@ -1,5 +1,6 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
+import { Link } from "expo-router";
 
 interface TripCardProps {
   trip: {
@@ -15,13 +16,19 @@ interface TripCardProps {
   };
 }
 
-const TripCard = ({ trip }: TripCardProps) => {
+const TripCard = 
+({ trip }: TripCardProps) => {
   return (
+    <Link href={`/trips/${trip.slug}`} asChild>
+       <TouchableOpacity>
     <View style={styles.container}>
       <Image source={{ uri: trip.img }} style={styles.image} />
     </View>
+    </TouchableOpacity>
+    </Link>
   );
 };
+
 
 export default TripCard;
 

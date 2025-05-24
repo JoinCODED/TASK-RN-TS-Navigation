@@ -1,5 +1,6 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { Link } from "expo-router";
 
 interface StayCardProps {
   stay: {
@@ -9,13 +10,18 @@ interface StayCardProps {
     rating: number;
     price: number;
     location: string;
+    slug: string;
   };
 }
 const StayCard = ({ stay }: StayCardProps) => {
   return (
+    <Link href={`/stays/${stay.slug}`}>
+
     <View style={styles.container}>
       <Image source={{ uri: stay.img }} style={styles.image} />
     </View>
+
+  </Link>
   );
 };
 
